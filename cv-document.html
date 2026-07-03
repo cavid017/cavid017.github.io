@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cavid Balayev — Curriculum Vitae</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sheet:#ffffff; --page:#e9e6dc; --ink:#1b1a16; --taupe:#8a877c; --deep:#3a382f;
+    --line:#e4e1d6; --track:#eceadf;
+    --serif:'Newsreader',Georgia,serif; --sans:'Space Grotesk','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--page);font-family:var(--sans);color:var(--ink);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .page{display:flex;justify-content:center;padding:34px 20px 44px}
+  .sheet{width:794px;min-height:1123px;background:var(--sheet);padding:50px 54px;
+    box-shadow:0 20px 60px rgba(27,26,22,.16);position:relative}
+
+  /* header */
+  .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:30px}
+  .hd h1{font-family:var(--serif);font-weight:400;font-size:46px;line-height:.98;letter-spacing:-.01em}
+  .hd .role{margin-top:10px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--taupe)}
+  .permit{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:9px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--deep);border:1px solid var(--ink);padding:6px 10px}
+  .permit::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink)}
+  .photo{flex:none;width:118px;height:118px;border-radius:50%;overflow:hidden;border:1px solid var(--ink)}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.02)}
+
+  /* contact bar */
+  .contact{display:flex;flex-wrap:wrap;gap:7px 20px;margin-top:26px;padding-top:16px;
+    border-top:1px solid var(--line);font-size:10px;letter-spacing:.02em;color:var(--deep)}
+  .contact a{color:var(--deep);text-decoration:none}
+  .contact span{display:inline-flex;align-items:center;gap:20px}
+  .contact span::after{content:"";width:3px;height:3px;border-radius:50%;background:var(--taupe)}
+  .contact span:last-child::after{display:none}
+
+  .divide{height:1.5px;background:var(--ink);margin-top:16px}
+
+  /* columns */
+  .cols{display:grid;grid-template-columns:32% 1fr;gap:36px;margin-top:26px}
+  section{margin-bottom:22px}
+  .h2{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink);
+    margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+
+  /* sidebar */
+  .lang{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+  .lang b{font-weight:500;font-size:11px}
+  .lang span{color:var(--taupe);text-transform:uppercase;font-size:8.5px;letter-spacing:.08em}
+  .sk{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .sk .n{flex:0 0 86px;font-size:10.5px}
+  .sk .bar{flex:1;height:3px;background:var(--track);border-radius:2px;overflow:hidden}
+  .sk .bar i{display:block;height:100%;background:var(--ink)}
+  .sk .lv{flex:0 0 60px;text-align:right;font-size:8px;letter-spacing:.07em;text-transform:uppercase;color:var(--taupe)}
+
+  /* main */
+  .profile{font-family:var(--serif);font-weight:300;font-size:14px;line-height:1.62;color:var(--deep)}
+  .job{margin-bottom:13px}
+  .job:last-child{margin-bottom:0}
+  .r1{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .org{font-weight:600;font-size:11.5px;letter-spacing:.01em}
+  .date{font-size:9.5px;color:var(--taupe);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .role{font-family:var(--serif);font-style:italic;font-weight:400;font-size:12px;color:var(--ink)}
+  .loc{font-size:8.5px;color:var(--taupe);text-transform:uppercase;letter-spacing:.09em;margin-top:1px}
+  .sub{margin-top:4px;padding-left:14px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+  .sub .r2b{display:flex;flex-direction:column;gap:1px}
+  .edu{margin-bottom:11px}
+  .deg{font-family:var(--serif);font-style:italic;font-size:12px;color:var(--deep)}
+
+  @media print{
+    body{background:#fff}
+    .page{padding:0}
+    .sheet{box-shadow:none;width:100%;min-height:auto}
+    @page{size:A4;margin:0}
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <article class="sheet">
+      <header class="hd">
+        <div class="hd-id">
+          <h1>Cavid Balayev</h1>
+          <div class="role">Architect — Istanbul, Türkiye</div>
+          <div class="permit">Work permit holder · eligible to work in Türkiye</div>
+        </div>
+        <div class="photo"><img src="assets/photo.jpg" alt="Cavid Balayev"></div>
+      </header>
+
+      <div class="contact">
+        <span>+90 552 542 60 31</span>
+        <span><a href="mailto:cavid.b.017@gmail.com">cavid.b.017@gmail.com</a></span>
+        <span><a href="https://www.linkedin.com/in/cavid-bv000">linkedin.com/in/cavid-bv000</a></span>
+        <span><a href="https://cavid017.github.io">cavid017.github.io</a></span>
+        <span>Levent, İstanbul</span>
+      </div>
+      <div class="divide"></div>
+
+      <div class="cols">
+        <!-- sidebar -->
+        <aside>
+          <section>
+            <div class="h2">Languages</div>
+            <div class="lang"><b>Azerbaijani</b><span>Native</span></div>
+            <div class="lang"><b>Turkish</b><span>Native</span></div>
+            <div class="lang"><b>English</b><span>Fluent</span></div>
+            <div class="lang"><b>Russian</b><span>Intermediate</span></div>
+          </section>
+          <section>
+            <div class="h2">Software</div>
+            <div class="sk"><span class="n">AutoCAD</span><span class="bar"><i style="width:100%"></i></span><span class="lv">Expert</span></div>
+            <div class="sk"><span class="n">SketchUp</span><span class="bar"><i style="width:88%"></i></span><span class="lv">Advanced</span></div>
+            <div class="sk"><span class="n">Lumion</span><span class="bar"><i style="width:88%"></i></span><span class="lv">Advanced</span></div>
+            <div class="sk"><span class="n">D5 Render</span><span class="bar"><i style="width:88%"></i></span><span class="lv">Advanced</span></div>
+            <div class="sk"><span class="n">Photoshop</span><span class="bar"><i style="width:88%"></i></span><span class="lv">Advanced</span></div>
+            <div class="sk"><span class="n">Revit</span><span class="bar"><i style="width:56%"></i></span><span class="lv">Interm.</span></div>
+            <div class="sk"><span class="n">Illustrator</span><span class="bar"><i style="width:56%"></i></span><span class="lv">Interm.</span></div>
+            <div class="sk"><span class="n">InDesign</span><span class="bar"><i style="width:56%"></i></span><span class="lv">Interm.</span></div>
+            <div class="sk"><span class="n">Rhinoceros</span><span class="bar"><i style="width:38%"></i></span><span class="lv">Basic</span></div>
+          </section>
+        </aside>
+
+        <!-- main -->
+        <main>
+          <section>
+            <div class="h2">Profile</div>
+            <p class="profile">Istanbul-based architect and Yıldız Technical University B.Arch graduate specialising in computational and parametric design, architectural visualisation and graphic design. Progressed from internships to Site Architect on cultural, residential and social-housing projects — pairing strong 3D visualisation with a disciplined process that carries designs from concept to buildable detail.</p>
+          </section>
+
+          <section>
+            <div class="h2">Experience</div>
+
+            <div class="job">
+              <div class="r1"><span class="org">UMA Infrastructure &amp; Construction</span><span class="date">2026 Jun – Present</span></div>
+              <div class="role">Site Architect</div><div class="loc">Istanbul</div>
+            </div>
+
+            <div class="job">
+              <div class="r1"><span class="org">Protean Construction</span></div>
+              <div class="sub">
+                <div class="r2b"><div class="r1"><span class="role">Site Architect</span><span class="date">2025 Jul – 2026 May</span></div><div class="loc">Baku</div></div>
+                <div class="r2b"><div class="r1"><span class="role">Junior Architect</span><span class="date">2025 Jan – 2025 Jun</span></div><div class="loc">Istanbul · Remote</div></div>
+              </div>
+            </div>
+
+            <div class="job">
+              <div class="r1"><span class="org">Başyapı – İnkosa Business Partnership</span><span class="date">2024 Sep – 2024 Oct</span></div>
+              <div class="role">Intern Site Architect</div><div class="loc">Istanbul</div>
+            </div>
+
+            <div class="job">
+              <div class="r1"><span class="org">BINAA — Building Innovation Arts Architecture</span><span class="date">2024 Jun – 2024 Aug</span></div>
+              <div class="role">Intern Architect</div><div class="loc">Istanbul</div>
+            </div>
+
+            <div class="job">
+              <div class="r1"><span class="org">Berko Construction</span><span class="date">2023 Aug – 2023 Sep</span></div>
+              <div class="role">Intern Site Architect</div><div class="loc">Istanbul</div>
+            </div>
+
+            <div class="job">
+              <div class="r1"><span class="org">Uysalkan Architecture</span><span class="date">2019 Sep – 2019 Oct</span></div>
+              <div class="role">Intern Architect</div><div class="loc">Istanbul</div>
+            </div>
+          </section>
+
+          <section>
+            <div class="h2">Education</div>
+            <div class="edu">
+              <div class="r1"><span class="org">Yıldız Technical University</span><span class="date">2017 – 2025</span></div>
+              <div class="deg">Bachelor of Architecture (B.Arch)</div><div class="loc">Istanbul</div>
+            </div>
+            <div class="edu">
+              <div class="r1"><span class="org">Baku School No. 272</span><span class="date">2006 – 2017</span></div>
+              <div class="deg">High School Diploma</div><div class="loc">Baku</div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
