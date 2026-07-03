@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cavid Balayev — Architect</title>
 <meta name="description" content="Cavid Balayev — Istanbul-based architect. Selected works, portfolio and CV.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f4f2ec">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cavid Balayev — Architect">
+<meta property="og:description" content="Istanbul-based architect — selected works, portfolio and CV.">
+<meta property="og:url" content="https://cavid017.github.io/">
+<meta property="og:image" content="https://cavid017.github.io/assets/slides/page-08.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
@@ -43,6 +51,9 @@
     line-height:.92;letter-spacing:-.02em}
   .bio{font-family:var(--serif);font-weight:300;font-size:clamp(16px,min(1.95vw,2.5vh),21px);
     line-height:1.5;max-width:520px;margin-top:clamp(18px,2.4vh,30px);color:var(--deep)}
+  .permit{display:flex;align-items:center;gap:9px;margin-top:clamp(14px,2.2vh,22px);
+    font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep)}
+  .permit::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink);flex:none}
 
   .links{display:flex;flex-direction:column}
   .row{display:flex;justify-content:space-between;align-items:center;gap:20px;
@@ -73,7 +84,6 @@
 </head>
 <body>
   <header>
-    <div class="brand">Cavid Balayev</div>
     <div class="topright">
       <span class="based" data-i="based">Istanbul, Türkiye</span>
       <button id="langBtn">TR</button>
@@ -83,9 +93,10 @@
   <main>
     <div class="left">
       <div>
-        <div class="kicker"><span data-i="role">Architect</span> — <span data-i="loc">Istanbul, Türkiye</span> — 2025</div>
-        <h1>Cavid<br>Balayev</h1>
+        <div class="kicker"><span data-i="role">Architect</span> — <span data-i="loc">Istanbul, Türkiye</span></div>
+        <h1>Cavid Balayev</h1>
         <p class="bio" data-i="bio">Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.</p>
+        <div class="permit" data-i="permit">Work permit holder — eligible to work in Türkiye</div>
       </div>
 
       <div class="links">
@@ -104,7 +115,8 @@
         <div class="social">
           <a class="lnk" href="https://www.linkedin.com/in/cavid-bv000" target="_blank" rel="noopener">LinkedIn ↗</a>
           <a class="lnk" href="mailto:cavid.b.017@gmail.com">cavid.b.017@gmail.com</a>
-          <a class="lnk" href="portfolio.pdf" target="_blank" rel="noopener" data-i="dl">Download PDF ↓</a>
+          <a class="lnk" href="cv.html" target="_blank" rel="noopener" data-i="dlcv">Download CV ↓</a>
+          <a class="lnk" href="portfolio.pdf" target="_blank" rel="noopener" download data-i="dlpf">Download Portfolio ↓</a>
         </div>
       </div>
     </div>
@@ -119,10 +131,12 @@
   const T={
     en:{based:"Istanbul, Türkiye",role:"Architect",loc:"Istanbul, Türkiye",
       bio:"Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.",
-      pf:"Portfolio",pfk:"Selected works",cvk:"Résumé — PDF",bhk:"Visual archive",dl:"Download PDF ↓"},
+      permit:"Work permit holder — eligible to work in Türkiye",
+      pf:"Portfolio",pfk:"Selected works",cvk:"Résumé — PDF",bhk:"Visual archive",dlcv:"Download CV ↓",dlpf:"Download Portfolio ↓"},
     tr:{based:"İstanbul, Türkiye",role:"Mimar",loc:"İstanbul, Türkiye",
       bio:"İstanbul merkezli mimar; kültürel yapılardan sosyal konuta uzanan projelerde hesaplamalı ve parametrik tasarım, mimari görselleştirme ve saha yönetimi.",
-      pf:"Portföy",pfk:"Seçili işler",cvk:"Özgeçmiş — PDF",bhk:"Görsel arşiv",dl:"PDF indir ↓"}
+      permit:"Türkiye çalışma izni sahibi — çalışmaya hazır",
+      pf:"Portföy",pfk:"Seçili işler",cvk:"Özgeçmiş — PDF",bhk:"Görsel arşiv",dlcv:"CV indir ↓",dlpf:"Portföy indir ↓"}
   };
   let lang=localStorage.getItem('lang')||'en';
   function apply(){
