@@ -3,67 +3,131 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cavid Balayev — Architecture Portfolio</title>
+<title>Cavid Balayev — Architect</title>
+<meta name="description" content="Cavid Balayev — Baku-born, Istanbul-based architect. Selected works, portfolio and CV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FBFBF9; --ink:#16181B; --muted:#6A7078; --hair:#E2E3DF; --sq:#E7E7E3;
-    --geo:"Futura","Century Gothic","Avenir Next","Nunito Sans","Segoe UI",system-ui,sans-serif;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{ --bg:#111316; --ink:#F1F1EE; --muted:#9BA1A8; --hair:#2A2D31; --sq:#1B1E22; }
+    --paper:#f4f2ec; --ink:#1b1a16; --taupe:#78756c; --deep:#3a382f;
+    --line:rgba(27,26,22,.14); --hair:rgba(27,26,22,.22);
+    --serif:'Newsreader',Georgia,serif; --sans:'Space Grotesk','Segoe UI',system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    background:
-      linear-gradient(var(--sq) 1px,transparent 1px) 0 0/64px 64px,
-      linear-gradient(90deg,var(--sq) 1px,transparent 1px) 0 0/64px 64px,
-      var(--bg);
-    color:var(--ink); font-family:var(--geo);
-    min-height:100%; display:flex; align-items:center; justify-content:center;
-    padding:40px 22px; -webkit-font-smoothing:antialiased;
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh;
+    display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  .lnk{transition:opacity .25s}
+  .lnk:hover{opacity:.55}
+
+  /* top bar */
+  header{display:flex;justify-content:space-between;align-items:center;
+    padding:clamp(22px,3vw,34px) clamp(24px,5vw,72px)}
+  .brand{font-size:15px;letter-spacing:.34em;text-transform:uppercase;font-weight:500}
+  .topright{display:flex;gap:clamp(16px,2.4vw,32px);align-items:center;
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+  .topright .based{color:var(--taupe)}
+  #langBtn{cursor:pointer;border:1px solid var(--ink);padding:6px 12px;letter-spacing:.14em;
+    font-weight:500;background:none;color:inherit;font-family:inherit;font-size:12px;text-transform:uppercase}
+  #langBtn:hover{background:var(--ink);color:var(--paper)}
+
+  /* main */
+  main{flex:1;display:grid;grid-template-columns:1.06fr .94fr;border-top:1px solid var(--line)}
+  .left{padding:clamp(40px,6vw,72px);display:flex;flex-direction:column;justify-content:space-between;gap:56px}
+  .kicker{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:clamp(28px,4vw,40px)}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(58px,9vw,104px);line-height:.94;letter-spacing:-.02em}
+  .bio{font-family:var(--serif);font-weight:300;font-size:clamp(19px,2.2vw,24px);line-height:1.55;
+    max-width:540px;margin-top:clamp(28px,3vw,40px);color:var(--deep)}
+
+  .links{display:flex;flex-direction:column}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:20px;
+    padding:clamp(18px,2.2vw,24px) 0;border-top:1px solid var(--ink);text-decoration:none;color:var(--ink)}
+  .row:last-of-type{border-bottom:1px solid var(--ink)}
+  .row .t{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,31px)}
+  .row .k{display:flex;gap:16px;align-items:center;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--taupe);white-space:nowrap}
+  .row .arr{font-size:20px;color:var(--ink);transition:transform .3s}
+  .row:hover .arr{transform:translate(3px,-3px)}
+  .social{display:flex;gap:clamp(20px,3vw,36px);flex-wrap:wrap;padding-top:26px;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  .social a{text-decoration:none}
+
+  .right{border-left:1px solid var(--line);position:relative;overflow:hidden;background:#eceae2;min-height:420px}
+  .right img{width:100%;height:100%;object-fit:cover;object-position:72% center;display:block}
+  .right .cap{position:absolute;left:20px;bottom:18px;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--paper);mix-blend-mode:difference}
+
+  @media (max-width:900px){
+    main{grid-template-columns:1fr}
+    .right{order:-1;min-height:38vh;border-left:none;border-bottom:1px solid var(--line)}
+    .right img{object-position:center}
+    .left{gap:44px}
   }
-  .card{ max-width:560px; width:100%; text-align:center; }
-  .eyebrow{ font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:var(--muted); margin-bottom:26px; }
-  h1{ font-size:clamp(34px,8vw,58px); font-weight:600; letter-spacing:.16em; line-height:1.1; text-transform:lowercase; }
-  .sub{ margin-top:16px; font-size:13px; letter-spacing:.34em; text-transform:uppercase; color:var(--ink); }
-  .rule{ width:44px; height:2px; background:var(--ink); margin:30px auto; }
-  .lead{ font-size:14px; line-height:1.7; color:var(--muted); max-width:42ch; margin:0 auto; }
-  .cta{
-    display:inline-flex; align-items:center; gap:10px; margin-top:34px;
-    font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
-    color:var(--bg); background:var(--ink); text-decoration:none;
-    padding:15px 30px; border-radius:2px; transition:opacity .2s;
-  }
-  .cta:hover{ opacity:.85 }
-  .cta svg{ width:15px; height:15px }
-  .links{ margin-top:34px; display:flex; flex-wrap:wrap; gap:8px 22px; justify-content:center;
-    font-size:12px; letter-spacing:.05em; }
-  .links a{ color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px; }
-  .links a:hover{ color:var(--ink); border-color:var(--ink) }
-  .year{ margin-top:46px; font-size:11px; letter-spacing:.4em; color:var(--muted) }
 </style>
 </head>
 <body>
-  <main class="card">
-    <div class="eyebrow">Architecture Portfolio</div>
-    <h1>cavid<br>balayev</h1>
-    <div class="sub">Architect</div>
-    <div class="rule"></div>
-    <p class="lead">Selected academic and professional works — cultural, residential and social-housing projects across Istanbul and Baku, with a focus on computational and parametric design.</p>
+  <header>
+    <div class="brand">Cavid Balayev</div>
+    <div class="topright">
+      <span class="based" data-i="based">Istanbul / Baku</span>
+      <button id="langBtn">TR</button>
+    </div>
+  </header>
 
-    <a class="cta" href="portfolio.pdf" target="_blank" rel="noopener">
-      View Portfolio
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+  <main>
+    <div class="left">
+      <div>
+        <div class="kicker"><span data-i="role">Architect</span> — Istanbul / Baku — 2025</div>
+        <h1>Cavid<br>Balayev</h1>
+        <p class="bio" data-i="bio">Baku-born, Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.</p>
+      </div>
 
-    <nav class="links">
-      <a href="https://www.linkedin.com/in/cavid-bv000" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:cavid.b.017@gmail.com">cavid.b.017@gmail.com</a>
-      <a href="portfolio.pdf" download>Download PDF</a>
-    </nav>
+      <div class="links">
+        <a class="row lnk" href="portfolio.html">
+          <span class="t" data-i="pf">Portfolio</span>
+          <span class="k"><span data-i="pfk">Selected works</span><span class="arr">↗</span></span>
+        </a>
+        <a class="row lnk" href="cv.html" target="_blank" rel="noopener">
+          <span class="t">CV</span>
+          <span class="k"><span data-i="cvk">Résumé — PDF</span><span class="arr">↗</span></span>
+        </a>
+        <a class="row lnk" href="https://www.behance.net/" target="_blank" rel="noopener">
+          <span class="t">Behance</span>
+          <span class="k"><span data-i="bhk">Visual archive</span><span class="arr">↗</span></span>
+        </a>
+        <div class="social">
+          <a class="lnk" href="https://www.linkedin.com/in/cavid-bv000" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="lnk" href="mailto:cavid.b.017@gmail.com">cavid.b.017@gmail.com</a>
+          <a class="lnk" href="portfolio.pdf" target="_blank" rel="noopener" data-i="dl">Download PDF ↓</a>
+        </div>
+      </div>
+    </div>
 
-    <div class="year">2025</div>
+    <div class="right">
+      <img src="assets/slides/page-08.jpg" alt="Research Institute of Sinan the Architect — render">
+      <div class="cap">Tophane · İstanbul</div>
+    </div>
   </main>
+
+<script>
+  const T={
+    en:{based:"Istanbul / Baku",role:"Architect",
+      bio:"Baku-born, Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.",
+      pf:"Portfolio",pfk:"Selected works",cvk:"Résumé — PDF",bhk:"Visual archive",dl:"Download PDF ↓"},
+    tr:{based:"İstanbul / Bakü",role:"Mimar",
+      bio:"Bakü doğumlu, İstanbul merkezli mimar; kültürel yapılardan sosyal konuta uzanan projelerde hesaplamalı ve parametrik tasarım, mimari görselleştirme ve saha yönetimi.",
+      pf:"Portföy",pfk:"Seçili işler",cvk:"Özgeçmiş — PDF",bhk:"Görsel arşiv",dl:"PDF indir ↓"}
+  };
+  let lang=localStorage.getItem('lang')||'en';
+  function apply(){
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(T[lang][k]!=null)el.textContent=T[lang][k];});
+    document.getElementById('langBtn').textContent=lang==='en'?'TR':'EN';
+  }
+  document.getElementById('langBtn').addEventListener('click',()=>{lang=lang==='en'?'tr':'en';localStorage.setItem('lang',lang);apply();});
+  apply();
+</script>
 </body>
 </html>

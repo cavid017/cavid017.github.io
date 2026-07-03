@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cavid Balayev — Portfolio</title>
+<meta name="description" content="Selected architectural works by Cavid Balayev — cultural, residential and social-housing projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f2ec; --stage:#e7e5dd; --ink:#1b1a16; --taupe:#78756c; --deep:#3a382f;
+    --line:rgba(27,26,22,.16);
+    --serif:'Newsreader',Georgia,serif; --sans:'Space Grotesk','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow:hidden}
+  body[data-mode="v"]{overflow:auto}
+  a{color:inherit}
+  button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+  .lnk{transition:opacity .25s}.lnk:hover{opacity:.55}
+
+  /* ---------- header ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;
+    align-items:center;padding:18px clamp(20px,4vw,44px);
+    background:linear-gradient(var(--paper),rgba(244,242,236,.86) 70%,rgba(244,242,236,0));
+    mix-blend-mode:normal}
+  .hleft{display:flex;gap:clamp(16px,3vw,34px);align-items:center}
+  .brand{font-size:14px;letter-spacing:.32em;text-transform:uppercase;font-weight:500}
+  .home{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);text-decoration:none;display:flex;gap:8px;align-items:center}
+  .hright{display:flex;gap:14px;align-items:center}
+  .seg{display:flex;border:1px solid var(--ink)}
+  .seg button{padding:7px 13px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  #langBtn{border:1px solid var(--ink);padding:7px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+  #langBtn:hover{background:var(--ink);color:var(--paper)}
+
+  /* ---------- footer caption ---------- */
+  footer{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;
+    align-items:flex-end;gap:20px;padding:20px clamp(20px,4vw,44px) 22px;
+    background:linear-gradient(rgba(244,242,236,0),rgba(244,242,236,.86) 40%,var(--paper))}
+  .capnum{font-family:var(--serif);font-weight:300;font-size:clamp(30px,5vw,52px);line-height:.85}
+  .captxt{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .captitle{font-family:var(--serif);font-weight:400;font-size:clamp(17px,2.4vw,24px);line-height:1.05}
+  .capmeta{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .capline{display:flex;align-items:baseline;gap:clamp(14px,2vw,22px)}
+  .count{font-size:12px;letter-spacing:.16em;color:var(--taupe);font-variant-numeric:tabular-nums;text-align:right}
+  .prog{width:clamp(90px,16vw,190px);height:2px;background:rgba(27,26,22,.18);margin-top:10px;overflow:hidden}
+  .prog b{display:block;height:100%;background:var(--ink);width:0;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+  .hint{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe);margin-top:7px}
+
+  /* ---------- HORIZONTAL ---------- */
+  #app{height:100vh}
+  .hwrap{height:100vh;position:relative;background:var(--stage);overflow:hidden}
+  .track{display:flex;height:100%;will-change:transform;transition:transform .62s cubic-bezier(.5,.05,.15,1)}
+  .track.drag{transition:none}
+  .hslide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;
+    padding:clamp(70px,10vh,104px) clamp(48px,9vw,150px)}
+  .hslide img{max-width:100%;max-height:100%;object-fit:contain;display:block;
+    box-shadow:0 24px 70px rgba(27,26,22,.20);background:#fff}
+  .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:30;width:clamp(44px,6vw,62px);
+    height:clamp(44px,6vw,62px);border:1px solid var(--ink);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;
+    background:rgba(244,242,236,.7);backdrop-filter:blur(4px);transition:all .25s}
+  .nav:hover{background:var(--ink);color:var(--paper)}
+  .nav.prev{left:clamp(12px,2.5vw,30px)}.nav.next{right:clamp(12px,2.5vw,30px)}
+  .nav[disabled]{opacity:.28;pointer-events:none}
+
+  /* ---------- VERTICAL ---------- */
+  .vwrap{scroll-snap-type:y proximity}
+  .vslide{min-height:100vh;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;
+    padding:clamp(96px,13vh,140px) clamp(28px,8vw,150px)}
+  .vslide figure{margin:0;opacity:0;transform:translateY(46px) scale(.985);
+    transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .vslide.in figure{opacity:1;transform:none}
+  .vslide img{max-width:100%;max-height:82vh;object-fit:contain;display:block;
+    box-shadow:0 24px 70px rgba(27,26,22,.18);background:#fff}
+  body[data-mode="v"] .nav{display:none}
+  @media (prefers-reduced-motion:reduce){
+    .track{transition:none}.vslide figure{transition:none;opacity:1;transform:none}
+  }
+  @media (max-width:720px){
+    .capnum{display:none}
+    footer{padding-bottom:16px}
+    .home span.long{display:none}
+  }
+</style>
+</head>
+<body data-mode="h">
+  <header>
+    <div class="hleft">
+      <a class="home lnk" href="index.html">← <span class="long" data-i="home">Home</span></a>
+      <div class="brand">Cavid Balayev</div>
+    </div>
+    <div class="hright">
+      <div class="seg" role="group" aria-label="View mode">
+        <button id="mH" aria-pressed="true"  data-i="slider">Slider</button>
+        <button id="mV" aria-pressed="false" data-i="scroll">Scroll</button>
+      </div>
+      <button id="langBtn">TR</button>
+    </div>
+  </header>
+
+  <div id="app"></div>
+
+  <footer>
+    <div class="capline">
+      <div class="capnum" id="capNum">01</div>
+      <div class="captxt">
+        <div class="captitle" id="capTitle">Portfolio</div>
+        <div class="capmeta" id="capMeta">2025</div>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div class="count"><span id="cur">01</span> / 18</div>
+      <div class="prog"><b id="progBar"></b></div>
+      <div class="hint" id="hint" data-i="hintH">← → · swipe · scroll</div>
+    </div>
+  </footer>
+
+<script>
+/* ---------------- data ---------------- */
+const PROJECTS=[
+ {r:[3,6],  num:'01', title:'Acoustic Experience Museum', place:'Kadıköy · İstanbul', meta:'Academic · 2024'},
+ {r:[7,10], num:'02', title:'Research Institute of Sinan the Architect', place:'Tophane · İstanbul', meta:'Academic · 2023'},
+ {r:[11,14],num:'03', title:'Social Housing', place:'Bayrampaşa · İstanbul', meta:'Academic · 2022'},
+ {r:[15,18],num:'04', title:'Cycling Club', place:'Beylerbeyi · İstanbul', meta:'Academic · 2019'},
+];
+function metaFor(n){
+  if(n===1) return {num:'',title:'Portfolio',meta:'2025'};
+  if(n===2) return {num:'',title:'Contents',meta:'01 – 04'};
+  for(const p of PROJECTS){ if(n>=p.r[0]&&n<=p.r[1]) return {num:p.num,title:p.title,meta:p.place+' — '+p.meta}; }
+  return {num:'',title:'',meta:''};
+}
+const N=18;
+const SLIDES=Array.from({length:N},(_,i)=>{const n=i+1;return {n,img:`assets/slides/page-${String(n).padStart(2,'0')}.jpg`,...metaFor(n)};});
+
+/* ---------------- i18n ---------------- */
+const T={en:{home:'Home',slider:'Slider',scroll:'Scroll',hintH:'← → · swipe · scroll',hintV:'scroll to explore'},
+         tr:{home:'Ana Sayfa',slider:'Slayt',scroll:'Kaydır',hintH:'← → · kaydır · swipe',hintV:'keşfetmek için kaydır'}};
+let lang=localStorage.getItem('lang')||'en';
+function applyLang(){document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(T[lang][k]!=null)el.textContent=T[lang][k];});
+  document.getElementById('hint').textContent=T[lang][mode==='h'?'hintH':'hintV'];
+  document.getElementById('langBtn').textContent=lang==='en'?'TR':'EN';}
+
+/* ---------------- shared caption ---------------- */
+function setCaption(i){const s=SLIDES[i];
+  document.getElementById('capNum').textContent=s.num||'—';
+  document.getElementById('capTitle').textContent=s.title;
+  document.getElementById('capMeta').textContent=s.meta;
+  document.getElementById('cur').textContent=String(i+1).padStart(2,'0');
+  document.getElementById('progBar').style.width=((i+1)/N*100)+'%';
+}
+
+/* ---------------- mode ---------------- */
+let mode=localStorage.getItem('pfmode')||'h';
+const app=document.getElementById('app');
+let idx=0, cleanup=null;
+
+function setMode(m){
+  if(cleanup){cleanup();cleanup=null;}
+  mode=m;localStorage.setItem('pfmode',m);
+  document.body.dataset.mode=m;
+  document.getElementById('mH').setAttribute('aria-pressed',m==='h');
+  document.getElementById('mV').setAttribute('aria-pressed',m==='v');
+  app.innerHTML='';
+  (m==='h'?renderH:renderV)();
+  applyLang();
+}
+
+/* ---------------- HORIZONTAL ---------------- */
+function renderH(){
+  const wrap=document.createElement('div');wrap.className='hwrap';
+  const track=document.createElement('div');track.className='track';
+  SLIDES.forEach(s=>{const sl=document.createElement('div');sl.className='hslide';
+    const im=document.createElement('img');im.src=s.img;im.alt=(s.title||'Portfolio')+' — page '+s.n;im.draggable=false;
+    sl.appendChild(im);track.appendChild(sl);});
+  const prev=document.createElement('button');prev.className='nav prev';prev.innerHTML='‹';prev.setAttribute('aria-label','Previous');
+  const next=document.createElement('button');next.className='nav next';next.innerHTML='›';next.setAttribute('aria-label','Next');
+  wrap.append(prev,next,track);app.appendChild(wrap);
+
+  function go(i){idx=Math.max(0,Math.min(N-1,i));track.style.transform=`translateX(${-idx*100}%)`;
+    prev.disabled=idx===0;next.disabled=idx===N-1;setCaption(idx);}
+  prev.onclick=()=>go(idx-1);next.onclick=()=>go(idx+1);
+
+  function key(e){if(e.key==='ArrowRight')go(idx+1);else if(e.key==='ArrowLeft')go(idx-1);
+    else if(e.key==='Home')go(0);else if(e.key==='End')go(N-1);}
+  window.addEventListener('keydown',key);
+
+  // wheel (horizontal intent) → step, throttled
+  let wlock=false;
+  function wheel(e){if(Math.abs(e.deltaX)>Math.abs(e.deltaY)||e.shiftKey){e.preventDefault();
+    if(wlock)return;wlock=true;setTimeout(()=>wlock=false,520);go(idx+(e.deltaX>0||e.deltaY>0?1:-1));}}
+  wrap.addEventListener('wheel',wheel,{passive:false});
+
+  // pointer swipe / drag
+  let sx=0,dragging=false,w=wrap.clientWidth;
+  function down(e){dragging=true;sx=e.clientX;w=wrap.clientWidth;track.classList.add('drag');wrap.setPointerCapture?.(e.pointerId);}
+  function move(e){if(!dragging)return;const dx=e.clientX-sx;track.style.transform=`translateX(calc(${-idx*100}% + ${dx}px))`;}
+  function up(e){if(!dragging)return;dragging=false;track.classList.remove('drag');
+    const dx=e.clientX-sx;if(Math.abs(dx)>w*0.12)go(idx+(dx<0?1:-1));else go(idx);}
+  wrap.addEventListener('pointerdown',down);wrap.addEventListener('pointermove',move);
+  wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);
+
+  go(Math.min(idx,N-1));
+  cleanup=()=>{window.removeEventListener('keydown',key);};
+}
+
+/* ---------------- VERTICAL ---------------- */
+function renderV(){
+  const wrap=document.createElement('div');wrap.className='vwrap';
+  SLIDES.forEach((s,i)=>{const sec=document.createElement('section');sec.className='vslide';sec.dataset.i=i;
+    const fig=document.createElement('figure');const im=document.createElement('img');
+    im.src=s.img;im.alt=(s.title||'Portfolio')+' — page '+s.n;im.loading=i>1?'lazy':'eager';
+    fig.appendChild(im);sec.appendChild(fig);wrap.appendChild(sec);});
+  app.appendChild(wrap);
+  const io=new IntersectionObserver((ents)=>{ents.forEach(en=>{
+    if(en.isIntersecting){en.target.classList.add('in');const i=+en.target.dataset.i;idx=i;setCaption(i);}
+  });},{threshold:.5});
+  wrap.querySelectorAll('.vslide').forEach(el=>io.observe(el));
+  setCaption(Math.min(idx,N-1));
+  // keep current slide roughly in view when switching from H
+  const target=wrap.querySelector(`.vslide[data-i="${idx}"]`);if(target)target.scrollIntoView({block:'start'});
+  cleanup=()=>io.disconnect();
+}
+
+/* ---------------- wire ---------------- */
+document.getElementById('mH').onclick=()=>setMode('h');
+document.getElementById('mV').onclick=()=>setMode('v');
+document.getElementById('langBtn').onclick=()=>{lang=lang==='en'?'tr':'en';localStorage.setItem('lang',lang);applyLang();};
+setMode(mode);
+</script>
+</body>
+</html>
