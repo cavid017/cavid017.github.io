@@ -24,7 +24,7 @@
 
   /* ---------- header ---------- */
   header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;
-    align-items:center;padding:18px clamp(20px,4vw,44px);
+    align-items:center;padding:12px clamp(20px,4vw,44px);
     background:linear-gradient(var(--paper),rgba(244,242,236,.86) 70%,rgba(244,242,236,0));
     mix-blend-mode:normal}
   .hleft{display:flex;gap:clamp(16px,3vw,34px);align-items:center}
@@ -39,9 +39,9 @@
 
   /* ---------- footer caption ---------- */
   footer{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;
-    align-items:flex-end;gap:20px;padding:20px clamp(20px,4vw,44px) 22px;
+    align-items:flex-end;gap:20px;padding:12px clamp(20px,4vw,44px) 15px;
     background:linear-gradient(rgba(244,242,236,0),rgba(244,242,236,.86) 40%,var(--paper))}
-  .capnum{font-family:var(--serif);font-weight:300;font-size:clamp(30px,5vw,52px);line-height:.85}
+  .capnum{font-family:var(--serif);font-weight:300;font-size:clamp(24px,3.4vw,38px);line-height:.85}
   .captxt{display:flex;flex-direction:column;gap:5px;min-width:0}
   .captitle{font-family:var(--serif);font-weight:400;font-size:clamp(17px,2.4vw,24px);line-height:1.05}
   .capmeta{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -57,7 +57,7 @@
   .track{display:flex;height:100%;will-change:transform;transition:transform .62s cubic-bezier(.5,.05,.15,1)}
   .track.drag{transition:none}
   .hslide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;
-    padding:clamp(70px,10vh,104px) clamp(48px,9vw,150px)}
+    padding:56px clamp(12px,3vw,50px) 74px}
   .hslide img{max-width:100%;max-height:100%;object-fit:contain;display:block;
     box-shadow:0 24px 70px rgba(27,26,22,.20);background:#fff}
   .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:30;width:clamp(44px,6vw,62px);
@@ -196,14 +196,15 @@ function renderH(){
     if(wlock)return;wlock=true;setTimeout(()=>wlock=false,520);go(idx+(e.deltaX>0||e.deltaY>0?1:-1));}}
   wrap.addEventListener('wheel',wheel,{passive:false});
 
-  // pointer swipe / drag
-  let sx=0,dragging=false,w=wrap.clientWidth;
-  function down(e){dragging=true;sx=e.clientX;w=wrap.clientWidth;track.classList.add('drag');wrap.setPointerCapture?.(e.pointerId);}
-  function move(e){if(!dragging)return;const dx=e.clientX-sx;track.style.transform=`translateX(calc(${-idx*100}% + ${dx}px))`;}
-  function up(e){if(!dragging)return;dragging=false;track.classList.remove('drag');
-    const dx=e.clientX-sx;if(Math.abs(dx)>w*0.12)go(idx+(dx<0?1:-1));else go(idx);}
-  wrap.addEventListener('pointerdown',down);wrap.addEventListener('pointermove',move);
-  wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);
+  // pointer drag / swipe — guarded so it never blocks the arrow clicks
+  let downX=null,moved=false,w=1;
+  function pdown(e){if(e.target.closest('.nav'))return;downX=e.clientX;w=wrap.clientWidth||1;moved=false;track.classList.add('drag');}
+  function pmove(e){if(downX===null)return;const dx=e.clientX-downX;if(Math.abs(dx)>6)moved=true;
+    track.style.transform=`translateX(calc(${-idx*100}% + ${dx}px))`;}
+  function pend(e){if(downX===null)return;const dx=e.clientX-downX;downX=null;track.classList.remove('drag');
+    if(moved&&Math.abs(dx)>w*0.10)go(idx+(dx<0?1:-1));else go(idx);}
+  wrap.addEventListener('pointerdown',pdown);wrap.addEventListener('pointermove',pmove);
+  wrap.addEventListener('pointerup',pend);wrap.addEventListener('pointerleave',pend);wrap.addEventListener('pointercancel',pend);
 
   go(Math.min(idx,N-1));
   cleanup=()=>{window.removeEventListener('keydown',key);};

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cavid Balayev — Architect</title>
-<meta name="description" content="Cavid Balayev — Baku-born, Istanbul-based architect. Selected works, portfolio and CV.">
+<meta name="description" content="Cavid Balayev — Istanbul-based architect. Selected works, portfolio and CV.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
-  body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh;
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);height:100vh;overflow:hidden;
     display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   a{color:inherit}
   .lnk{transition:opacity .25s}
@@ -24,7 +24,7 @@
 
   /* top bar */
   header{display:flex;justify-content:space-between;align-items:center;
-    padding:clamp(22px,3vw,34px) clamp(24px,5vw,72px)}
+    padding:clamp(15px,2.2vh,26px) clamp(24px,5vw,72px)}
   .brand{font-size:15px;letter-spacing:.34em;text-transform:uppercase;font-weight:500}
   .topright{display:flex;gap:clamp(16px,2.4vw,32px);align-items:center;
     font-size:12px;letter-spacing:.2em;text-transform:uppercase}
@@ -34,36 +34,40 @@
   #langBtn:hover{background:var(--ink);color:var(--paper)}
 
   /* main */
-  main{flex:1;display:grid;grid-template-columns:1.06fr .94fr;border-top:1px solid var(--line)}
-  .left{padding:clamp(40px,6vw,72px);display:flex;flex-direction:column;justify-content:space-between;gap:56px}
-  .kicker{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:clamp(28px,4vw,40px)}
-  h1{font-family:var(--serif);font-weight:300;font-size:clamp(58px,9vw,104px);line-height:.94;letter-spacing:-.02em}
-  .bio{font-family:var(--serif);font-weight:300;font-size:clamp(19px,2.2vw,24px);line-height:1.55;
-    max-width:540px;margin-top:clamp(28px,3vw,40px);color:var(--deep)}
+  main{flex:1;min-height:0;display:grid;grid-template-columns:1.06fr .94fr;border-top:1px solid var(--line)}
+  .left{padding:clamp(28px,4vh,56px) clamp(28px,5vw,72px);display:flex;flex-direction:column;
+    justify-content:space-between;gap:clamp(18px,3vh,38px);min-height:0}
+  .kicker{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);
+    margin-bottom:clamp(16px,2.6vh,30px)}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(44px,min(7vw,11.5vh),86px);
+    line-height:.92;letter-spacing:-.02em}
+  .bio{font-family:var(--serif);font-weight:300;font-size:clamp(16px,min(1.95vw,2.5vh),21px);
+    line-height:1.5;max-width:520px;margin-top:clamp(18px,2.4vh,30px);color:var(--deep)}
 
   .links{display:flex;flex-direction:column}
   .row{display:flex;justify-content:space-between;align-items:center;gap:20px;
-    padding:clamp(18px,2.2vw,24px) 0;border-top:1px solid var(--ink);text-decoration:none;color:var(--ink)}
+    padding:clamp(12px,1.7vh,20px) 0;border-top:1px solid var(--ink);text-decoration:none;color:var(--ink)}
   .row:last-of-type{border-bottom:1px solid var(--ink)}
-  .row .t{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,31px)}
+  .row .t{font-family:var(--serif);font-weight:400;font-size:clamp(21px,min(2.7vw,3.6vh),29px)}
   .row .k{display:flex;gap:16px;align-items:center;font-size:12px;letter-spacing:.18em;
     text-transform:uppercase;color:var(--taupe);white-space:nowrap}
   .row .arr{font-size:20px;color:var(--ink);transition:transform .3s}
   .row:hover .arr{transform:translate(3px,-3px)}
-  .social{display:flex;gap:clamp(20px,3vw,36px);flex-wrap:wrap;padding-top:26px;
+  .social{display:flex;gap:clamp(20px,3vw,36px);flex-wrap:wrap;padding-top:clamp(16px,2.2vh,24px);
     font-size:12px;letter-spacing:.16em;text-transform:uppercase}
   .social a{text-decoration:none}
 
-  .right{border-left:1px solid var(--line);position:relative;overflow:hidden;background:#eceae2;min-height:420px}
+  .right{border-left:1px solid var(--line);position:relative;overflow:hidden;background:#eceae2}
   .right img{width:100%;height:100%;object-fit:cover;object-position:72% center;display:block}
   .right .cap{position:absolute;left:20px;bottom:18px;font-size:11px;letter-spacing:.18em;
     text-transform:uppercase;color:var(--paper);mix-blend-mode:difference}
 
   @media (max-width:900px){
+    body{height:auto;overflow:auto}
     main{grid-template-columns:1fr}
-    .right{order:-1;min-height:38vh;border-left:none;border-bottom:1px solid var(--line)}
+    .right{order:-1;min-height:34vh;border-left:none;border-bottom:1px solid var(--line)}
     .right img{object-position:center}
-    .left{gap:44px}
+    h1{font-size:clamp(48px,13vw,86px)}
   }
 </style>
 </head>
@@ -71,7 +75,7 @@
   <header>
     <div class="brand">Cavid Balayev</div>
     <div class="topright">
-      <span class="based" data-i="based">Istanbul / Baku</span>
+      <span class="based" data-i="based">Istanbul, Türkiye</span>
       <button id="langBtn">TR</button>
     </div>
   </header>
@@ -79,9 +83,9 @@
   <main>
     <div class="left">
       <div>
-        <div class="kicker"><span data-i="role">Architect</span> — Istanbul / Baku — 2025</div>
+        <div class="kicker"><span data-i="role">Architect</span> — <span data-i="loc">Istanbul, Türkiye</span> — 2025</div>
         <h1>Cavid<br>Balayev</h1>
-        <p class="bio" data-i="bio">Baku-born, Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.</p>
+        <p class="bio" data-i="bio">Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.</p>
       </div>
 
       <div class="links">
@@ -113,11 +117,11 @@
 
 <script>
   const T={
-    en:{based:"Istanbul / Baku",role:"Architect",
-      bio:"Baku-born, Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.",
+    en:{based:"Istanbul, Türkiye",role:"Architect",loc:"Istanbul, Türkiye",
+      bio:"Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.",
       pf:"Portfolio",pfk:"Selected works",cvk:"Résumé — PDF",bhk:"Visual archive",dl:"Download PDF ↓"},
-    tr:{based:"İstanbul / Bakü",role:"Mimar",
-      bio:"Bakü doğumlu, İstanbul merkezli mimar; kültürel yapılardan sosyal konuta uzanan projelerde hesaplamalı ve parametrik tasarım, mimari görselleştirme ve saha yönetimi.",
+    tr:{based:"İstanbul, Türkiye",role:"Mimar",loc:"İstanbul, Türkiye",
+      bio:"İstanbul merkezli mimar; kültürel yapılardan sosyal konuta uzanan projelerde hesaplamalı ve parametrik tasarım, mimari görselleştirme ve saha yönetimi.",
       pf:"Portföy",pfk:"Seçili işler",cvk:"Özgeçmiş — PDF",bhk:"Görsel arşiv",dl:"PDF indir ↓"}
   };
   let lang=localStorage.getItem('lang')||'en';
