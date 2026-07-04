@@ -45,8 +45,8 @@
   #langBtn:hover{background:var(--ink);color:var(--paper)}
 
   /* main */
-  main{flex:1;min-height:0;display:grid;grid-template-columns:1.06fr .94fr;border-top:1px solid var(--line)}
-  .left{padding:clamp(28px,4vh,56px) clamp(28px,5vw,72px);display:flex;flex-direction:column;
+  main{flex:1;min-height:0;display:flex;border-top:1px solid var(--line)}
+  .left{flex:1;min-width:0;padding:clamp(28px,4vh,56px) clamp(28px,5vw,72px);display:flex;flex-direction:column;
     justify-content:space-between;gap:clamp(18px,3vh,38px);min-height:0}
   .kicker{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);
     margin-bottom:clamp(16px,2.6vh,30px)}
@@ -61,26 +61,35 @@
   .links{display:flex;flex-direction:column}
   .row{display:flex;justify-content:space-between;align-items:center;gap:20px;
     padding:clamp(12px,1.7vh,20px) 0;border-top:1px solid var(--ink);text-decoration:none;color:var(--ink)}
-  .row:last-of-type{border-bottom:1px solid var(--ink)}
+  .row.rowlast{border-bottom:1px solid var(--ink)}
+  .rmain{text-decoration:none;color:var(--ink)}
   .row .t{font-family:var(--serif);font-weight:400;font-size:clamp(21px,min(2.7vw,3.6vh),29px)}
+  .rside{display:flex;align-items:center;gap:clamp(16px,2.2vw,32px)}
   .row .k{display:flex;gap:16px;align-items:center;font-size:12px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--taupe);white-space:nowrap}
+    text-transform:uppercase;color:var(--taupe);white-space:nowrap;text-decoration:none}
   .row .arr{font-size:20px;color:var(--ink);transition:transform .3s}
   .row:hover .arr{transform:translate(3px,-3px)}
+  .rdl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);white-space:nowrap;
+    text-decoration:none;border:1px solid var(--hair);padding:7px 13px;transition:all .2s}
+  .rdl:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .social{display:flex;gap:clamp(20px,3vw,36px);flex-wrap:wrap;padding-top:clamp(16px,2.2vh,24px);
     font-size:12px;letter-spacing:.16em;text-transform:uppercase}
-  .social a{text-decoration:none}
+  .social a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;
+    text-decoration-color:var(--hair);transition:text-decoration-color .2s,opacity .25s}
+  .social a:hover{text-decoration-color:var(--ink)}
+  .social .lc{text-transform:none}
 
-  .right{border-left:1px solid var(--line);position:relative;overflow:hidden;background:#eceae2}
-  .right img{width:100%;height:100%;object-fit:cover;object-position:72% center;display:block}
-  .right .cap{position:absolute;left:20px;bottom:18px;font-size:11px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--paper);mix-blend-mode:difference}
+  .right{flex:none;align-self:stretch;aspect-ratio:941/1672;
+    margin:0 clamp(32px,3.6vw,60px) clamp(28px,4vh,56px);
+    position:relative;overflow:hidden}
+  .right img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+    transition:transform .45s cubic-bezier(.22,.61,.36,1);will-change:transform}
 
   @media (max-width:900px){
     body{height:auto;overflow:auto}
-    main{grid-template-columns:1fr}
-    .right{order:-1;min-height:34vh;border-left:none;border-bottom:1px solid var(--line)}
-    .right img{object-position:center}
+    main{flex-direction:column}
+    .right{order:-1;aspect-ratio:auto;width:100%;height:44vh;min-height:44vh;margin:0;border-bottom:1px solid var(--line)}
+    .right img{object-fit:cover;object-position:center 28%}
     h1{font-size:clamp(48px,13vw,86px)}
   }
 </style>
@@ -88,7 +97,7 @@
 <body>
   <header>
     <div class="topright">
-      <span class="based" data-i="based">Istanbul, Türkiye</span>
+      <span class="based" data-i="based">Istanbul, Turkiye</span>
       <button id="langBtn">TR</button>
     </div>
   </header>
@@ -96,50 +105,52 @@
   <main>
     <div class="left">
       <div>
-        <div class="kicker"><span data-i="role">Architect</span> — <span data-i="loc">Istanbul, Türkiye</span></div>
+        <div class="kicker"><span data-i="role">Architect</span> — <span data-i="loc">Istanbul, Turkiye</span></div>
         <h1>Cavid Balayev</h1>
-        <p class="bio" data-i="bio">Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.</p>
-        <div class="permit" data-i="permit">Work permit holder — eligible to work in Türkiye</div>
+        <p class="bio" data-i="bio">Istanbul-based architect with 1.5+ years of professional experience, contributing to cultural, residential and social-housing developments alongside infrastructure projects, from design through on-site construction. Currently Site Architect on the Kent Etiler residential development, built in partnership with Mesa and ASL, supervising structural works, quality control and on-site delivery.</p>
+        <p class="bio" data-i="bio2">Pairs hands-on site execution — formwork, reinforcement and concrete works, in-situ quality control, and contractor coordination — with construction documentation and high-quality architectural visualisation, applying commercial awareness across quantity take-offs and progress payments.</p>
+        <div class="permit" data-i="permit">Work permit holder — eligible to work in Turkiye</div>
       </div>
 
       <div class="links">
-        <a class="row lnk" href="portfolio.html">
-          <span class="t" data-i="pf">Portfolio</span>
-          <span class="k"><span data-i="pfk">Selected works</span><span class="arr">↗</span></span>
-        </a>
-        <a class="row lnk" href="cv.html">
-          <span class="t">CV</span>
-          <span class="k"><span data-i="cvk">Résumé — PDF</span><span class="arr">↗</span></span>
-        </a>
-        <a class="row lnk" href="https://www.behance.net/" target="_blank" rel="noopener">
-          <span class="t">Behance</span>
-          <span class="k"><span data-i="bhk">Visual archive</span><span class="arr">↗</span></span>
-        </a>
+        <div class="row">
+          <a class="rmain lnk" href="portfolio.html"><span class="t" data-i="pf">Portfolio</span></a>
+          <div class="rside">
+            <a class="k lnk" href="portfolio.html"><span data-i="pfk">Selected works</span><span class="arr">↗</span></a>
+            <a class="rdl lnk" href="portfolio.pdf" target="_blank" rel="noopener" download data-i="dl">Download ↓</a>
+          </div>
+        </div>
+        <div class="row rowlast">
+          <a class="rmain lnk" href="cv.html"><span class="t">CV</span></a>
+          <div class="rside">
+            <a class="k lnk" href="cv.html"><span data-i="cvk">Resume — PDF</span><span class="arr">↗</span></a>
+            <a class="rdl lnk" href="cv.pdf" download="Cavid-Balayev-CV.pdf" data-i="dl">Download ↓</a>
+          </div>
+        </div>
         <div class="social">
-          <a class="lnk" href="https://www.linkedin.com/in/cavid-bv000" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="lnk" href="mailto:cavid.b.017@gmail.com">cavid.b.017@gmail.com</a>
-          <a class="lnk" href="cv.pdf" download="Cavid-Balayev-CV.pdf" data-i="dlcv">Download CV ↓</a>
-          <a class="lnk" href="portfolio.pdf" target="_blank" rel="noopener" download data-i="dlpf">Download Portfolio ↓</a>
+          <a class="lnk lc" href="https://www.linkedin.com/in/cavid-bv000" target="_blank" rel="noopener">Linkedin</a>
+          <a class="lnk lc" href="mailto:cavid.b.017@gmail.com">cavid.b.017@gmail.com</a>
         </div>
       </div>
     </div>
 
     <div class="right">
-      <img src="assets/slides/page-08.jpg" alt="Research Institute of Sinan the Architect — render">
-      <div class="cap">Tophane · İstanbul</div>
+      <img src="assets/cover.jpg" alt="Cavid Balayev — architectural visualisation">
     </div>
   </main>
 
 <script>
   const T={
-    en:{based:"Istanbul, Türkiye",role:"Architect",loc:"Istanbul, Türkiye",
-      bio:"Istanbul-based architect working across computational and parametric design, architectural visualisation and site supervision — from cultural landmarks to social housing.",
-      permit:"Work permit holder — eligible to work in Türkiye",
-      pf:"Portfolio",pfk:"Selected works",cvk:"Résumé — PDF",bhk:"Visual archive",dlcv:"Download CV ↓",dlpf:"Download Portfolio ↓"},
+    en:{based:"Istanbul, Turkiye",role:"Architect",loc:"Istanbul, Turkiye",
+      bio:"Istanbul-based architect with 1.5+ years of professional experience, contributing to cultural, residential and social-housing developments alongside infrastructure projects, from design through on-site construction. Currently Site Architect on the Kent Etiler residential development, built in partnership with Mesa and ASL, supervising structural works, quality control and on-site delivery.",
+      bio2:"Pairs hands-on site execution — formwork, reinforcement and concrete works, in-situ quality control, and contractor coordination — with construction documentation and high-quality architectural visualisation, applying commercial awareness across quantity take-offs and progress payments.",
+      permit:"Work permit holder — eligible to work in Turkiye",
+      pf:"Portfolio",pfk:"Selected works",cvk:"Resume — PDF",bhk:"Visual archive",dl:"Download ↓"},
     tr:{based:"İstanbul, Türkiye",role:"Mimar",loc:"İstanbul, Türkiye",
-      bio:"İstanbul merkezli mimar; kültürel yapılardan sosyal konuta uzanan projelerde hesaplamalı ve parametrik tasarım, mimari görselleştirme ve saha yönetimi.",
+      bio:"1,5+ yıl profesyonel deneyime sahip İstanbul merkezli mimar; tasarımdan saha uygulamasına kadar kültürel, konut ve sosyal konut projeleri ile altyapı projelerine katkı sağlıyor. Şu anda Kent Etiler konut projesinde, Mesa ve ASL ortaklığında Saha Mimarı olarak yapısal işleri, kalite kontrolünü ve saha teslimatını yürütüyor.",
+      bio2:"Saha uygulamasını — kalıp, donatı ve beton işleri, yerinde kalite kontrol ve yüklenici koordinasyonu — yapım dokümantasyonu ve yüksek kaliteli mimari görselleştirmeyle birleştiriyor; metraj ve hakedişlerde ticari farkındalık uyguluyor.",
       permit:"Türkiye çalışma izni sahibi — çalışmaya hazır",
-      pf:"Portföy",pfk:"Seçili işler",cvk:"Özgeçmiş — PDF",bhk:"Görsel arşiv",dlcv:"CV indir ↓",dlpf:"Portföy indir ↓"}
+      pf:"Portföy",pfk:"Seçili işler",cvk:"Özgeçmiş — PDF",bhk:"Görsel arşiv",dl:"İndir ↓"}
   };
   let lang=localStorage.getItem('lang')||'en';
   function apply(){
@@ -149,6 +160,17 @@
   }
   document.getElementById('langBtn').addEventListener('click',()=>{lang=lang==='en'?'tr':'en';localStorage.setItem('lang',lang);apply();});
   apply();
+
+  /* ---- cover: zoom + parallax only while hovering the photo ---- */
+  (function(){
+    const panel=document.querySelector('.right'), img=panel&&panel.querySelector('img');
+    if(!img||!window.matchMedia('(pointer:fine)').matches||window.matchMedia('(max-width:900px)').matches) return;
+    panel.addEventListener('mousemove',function(e){const r=panel.getBoundingClientRect();
+      const rx=(e.clientX-r.left)/r.width-0.5, ry=(e.clientY-r.top)/r.height-0.5;
+      img.style.transform='scale(1.12) translate('+(-rx*6).toFixed(2)+'%, '+(-ry*6).toFixed(2)+'%)';});
+    panel.addEventListener('mouseleave',function(){img.style.transform='';});
+  })();
+
 </script>
 </body>
 </html>

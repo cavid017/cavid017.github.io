@@ -38,8 +38,12 @@
   .hleft{display:flex;gap:clamp(16px,3vw,34px);align-items:center}
   .brand{font-size:14px;letter-spacing:.32em;text-transform:uppercase;font-weight:500}
   .home{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);text-decoration:none;display:flex;gap:8px;align-items:center}
-  #langBtn{border:1px solid var(--ink);padding:7px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+  #langBtn{display:none}
   #langBtn:hover{background:var(--ink);color:var(--paper)}
+  .hright{display:flex;align-items:center;gap:clamp(12px,1.8vw,20px)}
+  .dlbtn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--ink);
+    padding:7px 14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink);transition:all .2s}
+  .dlbtn:hover{background:var(--ink);color:var(--paper)}
 
   /* ---------- footer caption ---------- */
   footer{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;
@@ -100,6 +104,7 @@
       <div class="brand">Cavid Balayev</div>
     </div>
     <div class="hright">
+      <a class="dlbtn" href="portfolio.pdf" download="Cavid-Balayev-Portfolio.pdf" data-i="dl">Download ↓</a>
       <button id="langBtn">TR</button>
     </div>
   </header>
@@ -115,7 +120,7 @@
       </div>
     </div>
     <div style="text-align:right">
-      <div class="count"><span id="cur">01</span> / 18</div>
+      <div class="count"><span id="cur">01</span> / 19</div>
       <div class="prog"><b id="progBar"></b></div>
       <div class="hint" id="hint" data-i="hint">← → keys · drag · swipe</div>
     </div>
@@ -145,14 +150,15 @@ function metaFor(n){
   if(n===1) return {num:'',title:'Portfolio',meta:'Selected Works'};
   if(n===2) return {num:'',title:'Contents',meta:'01 – 04'};
   for(const p of PROJECTS){ if(n>=p.r[0]&&n<=p.r[1]) return {num:p.num,title:p.title,meta:p.place+' — '+p.meta}; }
+  if(n===19) return {num:'',title:'Cavid Balayev',meta:'Portfolio 2025'};
   return {num:'',title:'',meta:''};
 }
-const N=18;
+const N=19;
 const SLIDES=Array.from({length:N},(_,i)=>{const n=i+1;return {n,img:`assets/slides/page-${String(n).padStart(2,'0')}.jpg`,...metaFor(n)};});
 
 /* ---------------- i18n ---------------- */
-const T={en:{home:'Home',hint:'← → keys · drag · swipe'},
-         tr:{home:'Ana Sayfa',hint:'← → tuşları · sürükle · kaydır'}};
+const T={en:{home:'Home',hint:'← → keys · drag · swipe',dl:'Download ↓'},
+         tr:{home:'Ana Sayfa',hint:'← → tuşları · sürükle · kaydır',dl:'İndir ↓'}};
 let lang=localStorage.getItem('lang')||'en';
 function applyLang(){document.documentElement.lang=lang;
   document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(T[lang][k]!=null)el.textContent=T[lang][k];});
