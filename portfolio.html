@@ -27,7 +27,8 @@
   @media (prefers-reduced-motion:no-preference){body{animation:pgfade .45s ease both}}
   @keyframes pgfade{from{opacity:0}to{opacity:1}}
   html,body{height:100%}
-  body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow:hidden;-webkit-user-select:none;-ms-user-select:none;user-select:none}
+  img{-webkit-user-drag:none;-webkit-user-select:none;user-select:none;pointer-events:none}
   a{color:inherit}
   button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
   .lnk{transition:opacity .25s}.lnk:hover{opacity:.55}
@@ -246,6 +247,8 @@ document.addEventListener('keydown',e=>{
 document.getElementById('langBtn').onclick=()=>{lang=lang==='en'?'tr':'en';localStorage.setItem('lang',lang);applyLang();};
 build();
 applyLang();
+/* deter copying / saving of the artwork */
+['contextmenu','dragstart','copy','cut','selectstart'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
 </script>
 </body>
 </html>

@@ -21,7 +21,9 @@
   @media (prefers-reduced-motion:no-preference){body{animation:pgfade .45s ease both}}
   @keyframes pgfade{from{opacity:0}to{opacity:1}}
   body{background:var(--page);font-family:var(--sans);color:var(--ink);
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    -webkit-user-select:none;-ms-user-select:none;user-select:none}
+  img{-webkit-user-drag:none;-webkit-user-select:none;user-select:none;pointer-events:none}
   a{color:inherit}
 
   /* minimal corner controls */
@@ -287,6 +289,7 @@
     stage.addEventListener('pointerup',end);stage.addEventListener('pointerleave',end);stage.addEventListener('pointercancel',end);
     document.addEventListener('keydown',function(e){if(e.key==='+'||e.key==='='){document.getElementById('zin').click();}else if(e.key==='-'){document.getElementById('zout').click();}else if(e.key==='0'||e.key==='Escape'){document.getElementById('zrst').click();}});
     fit();
+    ['contextmenu','dragstart','copy','cut','selectstart'].forEach(function(ev){document.addEventListener(ev,function(e){e.preventDefault();});});
   </script>
 </body>
 </html>
