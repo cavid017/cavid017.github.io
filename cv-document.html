@@ -20,7 +20,7 @@
     -webkit-user-select:none;-ms-user-select:none;user-select:none}
   img{-webkit-user-drag:none;-webkit-user-select:none;user-select:none;pointer-events:none}
   .page{display:flex;justify-content:center;padding:34px 20px 44px}
-  .sheet{width:794px;min-height:1123px;background:var(--sheet);padding:50px 54px;
+  .sheet{width:794px;min-height:1123px;background:var(--sheet);padding:40px 50px;
     box-shadow:0 20px 60px rgba(27,26,22,.16);position:relative}
 
   /* header */
@@ -34,7 +34,7 @@
   .photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.02)}
 
   /* contact bar */
-  .contact{display:flex;flex-wrap:wrap;gap:7px 20px;margin-top:26px;padding-top:16px;
+  .contact{display:flex;flex-wrap:wrap;gap:7px 20px;margin-top:18px;padding-top:14px;
     border-top:1px solid var(--line);font-size:10px;letter-spacing:.02em;color:var(--deep)}
   .contact a{color:var(--deep);text-decoration:none}
   .contact span{display:inline-flex;align-items:center;gap:20px}
@@ -44,8 +44,8 @@
   .divide{height:1.5px;background:var(--ink);margin-top:16px}
 
   /* columns */
-  .cols{display:grid;grid-template-columns:32% 1fr;gap:36px;margin-top:26px}
-  section{margin-bottom:22px}
+  .cols{display:grid;grid-template-columns:32% 1fr;gap:34px;margin-top:18px}
+  section{margin-bottom:15px}
   .h2{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink);
     margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
 
@@ -63,8 +63,8 @@
   .sk .lv{flex:0 0 66px;text-align:right;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--taupe)}
 
   /* main */
-  .profile{font-family:var(--serif);font-weight:300;font-size:14px;line-height:1.62;color:var(--deep)}
-  .job{margin-bottom:13px}
+  .profile{font-family:var(--serif);font-weight:300;font-size:13.5px;line-height:1.5;color:var(--deep)}
+  .job{margin-bottom:9px}
   .job:last-child{margin-bottom:0}
   .r1{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
   .org{font-weight:600;font-size:11.5px;letter-spacing:.01em}
@@ -82,7 +82,7 @@
   @media print{
     body{background:#fff}
     .page{padding:0}
-    .sheet{box-shadow:none;width:100%;min-height:auto}
+    .sheet{box-shadow:none;width:100%;min-height:auto;zoom:.88}
     @page{size:A4;margin:0}
   }
 </style>
